@@ -1,0 +1,14 @@
+install.packages("seasonal")
+library(seasonal)
+# Time Series Data
+data("AirPassengers")
+AP<-AirPassengers
+str(AP)
+head(AP)
+ts(AP,frequency=12,start=c(1949,1))
+attributes(AP)
+plot(AP,type='l',xlab='month',ylab='seasonality index',col='blue')
+# seasonal adjust time series using X11.
+sa_series <- seas(AP,x11 = "")
+# plot original and seasonally adjusted series.
+lines(final(sa_series),col=2)
