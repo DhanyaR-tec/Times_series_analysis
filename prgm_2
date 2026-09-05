@@ -1,0 +1,43 @@
+
+Install.packages(“TSstudio”)
+library(TSstudio)
+data(USgas)
+ts_info(USgas)
+ts_plot(USgas)
+#Adding titles
+ts_plot(USgas,
+title = "US Monthly Natural Gas Consumption",
+Xtitle = "Time",
+Ytitle = "Billion Cubic Feet")
+#Adding slider
+ts_plot(USgas,
+title = "US Monthly Natural Gas Consumption",
+Xtitle = "Time",
+Ytitle = "Billion Cubic Feet",
+slider = TRUE)
+#Customize the line
+##customize the line’s color and width of the plot
+ts_plot(USgas,
+title = "US Monthly Natural Gas Consumption",
+Xtitle = "Time",
+Ytitle = "Billion Cubic Feet",
+color = "red",
+width = 3)
+ts_plot(USgas,
+title = "US Monthly Natural Gas Consumption",
+Xtitle = "Time",
+Ytitle = "Billion Cubic Feet",
+color = "blared",
+width = 3)
+##create a dashed or dotted line
+ts_plot(USgas,
+title = "US Monthly Natural Gas Consumption",
+Xtitle = "Time",
+Ytitle = "Billion Cubic Feet",
+dash = "dash")
+##to add to the solid line markers
+ts_plot(USgas,
+title = "US Monthly Natural Gas Consumption",
+Xtitle = "Time",
+Ytitle = "Billion Cubic Feet",
+line.mode = "lines+markers")
