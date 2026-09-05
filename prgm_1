@@ -1,0 +1,42 @@
+Create example data frame
+data <- data.frame(x1 = c(1:4, 99999, 1, NA, 1, 1, NA),
+x1 = c(1:5, 1, "NA", 1, 1, "NA"),
+x1 = c(letters[c(1:3)], "x x", "x", " y y y", "x", "a", "a", NA),
+x4 = "",
+x5 = NA)
+data
+##Modify Column Names
+colnames(data)
+colnames(data) <- paste0("col", 1:ncol(data))
+data
+##Format Missing Values
+data[data == ""]
+data[data == ""] <- NA
+data$col2
+data$col2[data$col2 == "NA"] <- NA
+data
+##Remove Empty Rows & Columns
+data <- data[rowSums(is.na(data)) != ncol(data), ]
+data
+data <- data[ , colSums(is.na(data)) != nrow(data)]
+data
+##Remove Rows with Missing Values
+data <- na.omit(data)
+data
+##Remove Duplicates
+data <- unique(data)
+data
+##Modify Classes of Columns
+sapply(data, class)
+data <- type.convert(data, as.is = TRUE)
+data
+sapply(data, class)
+##Detect & Remove Outliers
+data$col1[data$col1 %in% boxplot.stats(data$col1)$out]
+data <- data[! data$col1 %in% boxplot.stats(data$col1)$out, ]
+data
+##Remove Spaces in Character Strings
+data$col3 <- gsub(" ", "", data$col3)
+data
+##Combine Categories
+data$col3[data$col3 %in% c("b", "c")] <- "a"
