@@ -1,0 +1,16 @@
+library(TTR)
+# Time Series Data
+data("AirPassengers")
+AP<-AirPassengers
+str(AP)
+head(AP)
+ts(AP,frequency=12,start=c(1949,1))
+attributes(AP)
+plot(AP)
+# decomposing using smoothing method
+## 3 yearly
+AP<-SMA(AP,n=3)
+plot(AP,type='l',xlab='month',ylab='seasonality index',col='blue')
+## 5 yearly
+AP<-SMA(AP,n=5)
+plot(AP,type='h',xlab='month',ylab='seasonality index',col='blue')
