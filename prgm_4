@@ -1,0 +1,16 @@
+# Time Series Data
+data("AirPassengers")
+AP<-AirPassengers
+str(AP)
+head(AP)
+ts(AP,frequency=12,start=c(1949,1))
+attributes(AP)
+plot(AP,type='l',xlab='month',ylab='seasonality index',col='blue')
+# log transformation
+AP<-log(AP)
+plot(AP,type='l',xlab='month',ylab='seasonality index',col='red')
+# Decomposition of additive time series
+decomp<-decompose(AP)
+decomp$figure
+plot(decomp$figure,type='l',xlab='month',ylab='seasonality index',col='green')
+plot(decomp)
