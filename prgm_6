@@ -1,0 +1,15 @@
+##loading the required packages
+library(tidyverse)
+library(fpp2)
+# create training and testing set
+# of the Google stock data
+goog.train <- window(goog,
+end = 900)
+goog.test <- window(goog,
+start = 901)
+# Performing SES on the
+# Google stock data
+ses.goog <- ses(goog.train,
+alpha = .2,
+h = 100)
+autoplot(ses.goog)
